@@ -11,12 +11,12 @@
   Phong光照模型由三部分组成：
 
   - Ambient Light 环境光
+  
+    <img src="http://latex.codecogs.com/gif.latex?I = K_a I_a" />
 
-    $I = K_a I_a$
+    <img src="http://latex.codecogs.com/gif.latex?I_a​" /> -> 环境光的强度
 
-    $I_a​$ -> 环境光的强度
-
-    $K_a$ -> 环境光反射系数
+    <img src="http://latex.codecogs.com/gif.latex?K_a" /> -> 环境光反射系数
 
     ```c++
     // in Source.cpp
@@ -34,15 +34,15 @@
 
   - Diffuse 漫反射
 
-    ![1556868885362](C:\Users\yali\AppData\Roaming\Typora\typora-user-images\1556868885362.png)
+    ![1556868885362.png](https://i.loli.net/2019/05/06/5ccf9e130092e.png)
 
-    $I_d = K_d I_e cos\alpha= K_d I_e (n\cdot l) $
+    <img src="http://latex.codecogs.com/gif.latex?I_d = K_d I_e cos\alpha= K_d I_e (n\cdot l)" />
+    
+    <img src="http://latex.codecogs.com/gif.latex?K_d"/> -> 漫反射的反射系数
 
-    $K_d​$ -> 漫反射的反射系数
+    <img src="http://latex.codecogs.com/gif.latex?I_e"/> -> 入射光强度
 
-    $I_e​$ -> 入射光强度
-
-    $cos\alpha$ -> 入射光（方向指向光源）与法向量的夹角
+    <img src="http://latex.codecogs.com/gif.latex?cos\alpha" /> -> 入射光（方向指向光源）与法向量的夹角
 
     ```c++
     // in Source.cpp
@@ -57,19 +57,19 @@
 
   - Specular 镜面反射
 
-    ![1556869035734](C:\Users\yali\AppData\Roaming\Typora\typora-user-images\1556869035734.png)
+    ![1556869035734.png](https://i.loli.net/2019/05/06/5ccf9e5b3114a.png)
 
-    $I_{specular} = K_s I_e (\bar{v}\cdot \bar{r})^{n_{shiny}}$
+    <img src="http://latex.codecogs.com/gif.latex?I_{specular} = K_s I_e (\bar{v}\cdot \bar{r})^{n_{shiny}}" />
 
-    $K_s$ -> 镜面反射的反射系数
+    <img src="http://latex.codecogs.com/gif.latex?K_s" /> -> 镜面反射的反射系数
 
-    $I_e$ -> 入射光强度
+    <img src="http://latex.codecogs.com/gif.latex?I_e" /> -> 入射光强度
 
-    $\bar{v}$ -> 指向观察者的向量
+    <img src="http://latex.codecogs.com/gif.latex?\bar{v}" /> -> 指向观察者的向量
 
-    $\bar{r}$ -> 反射光的向量
+    <img src="http://latex.codecogs.com/gif.latex?\bar{r}" /> -> 反射光的向量
 
-    $n_{shiny}$ -> 材质发光常数
+    <img src="http://latex.codecogs.com/gif.latex?n_{shiny}" /> -> 材质发光常数
 
     ```c++
     unsigned int specularStrengthLoc = glGetUniformLocation(ourShader.Program, "specularStrength");
@@ -173,7 +173,7 @@
 
     效果
 
-    ![1556870527778](C:\Users\yali\AppData\Roaming\Typora\typora-user-images\1556870527778.png)
+    ![1556870527778.png](https://i.loli.net/2019/05/06/5ccf9e5b2d2a8.png)
 
     
 
@@ -237,7 +237,7 @@
 
     效果
 
-    ![1556871120740](C:\Users\yali\AppData\Roaming\Typora\typora-user-images\1556871120740.png)
+    ![1556871120740.png](https://i.loli.net/2019/05/06/5ccf9e5ae41a3.png)
 
     可以看到通过顶点插值产生的光照没有每个顶点都使用Phong光照模型计算出来的那么平滑、自然。
 
@@ -359,7 +359,7 @@
 
   效果
 
-  ![1556871769480](C:\Users\yali\AppData\Roaming\Typora\typora-user-images\1556871769480.png)
+  ![1556871769480.png](https://i.loli.net/2019/05/06/5ccf9e5b2efba.png)
 
 ### Bonus
 
@@ -379,33 +379,33 @@ lightPos.y = sin(glfwGetTime() / 2.0f) * 1.0f;
 
 推导如下
 
-在坐标变换之前，假设$T$是位于图形表面的向量，$N$是法向量，于是有
+在坐标变换之前，假设<img src="http://latex.codecogs.com/gif.latex?T$是位于图形表面的向量，$N" />是法向量，于是有
 
-$N \cdot T = 0​$
+<img src="http://latex.codecogs.com/gif.latex?N \cdot T = 0​" />
 
-$N^{T}T = 0$
+<img src="http://latex.codecogs.com/gif.latex?N^{T}T = 0" />
 
-假设$T'$为$T$经过坐标变换后得到的向量，$N'$为$N$经过坐标变换后得到的向量，有
+假设<img src="http://latex.codecogs.com/gif.latex?T'$为$T$经过坐标变换后得到的向量，$N'$为$N" />经过坐标变换后得到的向量，有
 
-$T' = MT$
+<img src="http://latex.codecogs.com/gif.latex?T' = MT" />
 
-$N' = GN$
+<img src="http://latex.codecogs.com/gif.latex?N' = GN" />
 
-要使$N'$依旧为法向量，则要有
+要使<img src="http://latex.codecogs.com/gif.latex?N'" />依旧为法向量，则要有
 
-$N'\cdot T' = 0$
+<img src="http://latex.codecogs.com/gif.latex?N'\cdot T' = 0" />
 
-$(GN)\cdot (MT) = 0​$
+<img src="http://latex.codecogs.com/gif.latex?(GN)\cdot (MT) = 0​" />
 
-$(GN)^{T}(MT) = 0​$
+<img src="http://latex.codecogs.com/gif.latex?(GN)^{T}(MT) = 0​" />
 
-$N^{T}G^{T}MT = 0$
+<img src="http://latex.codecogs.com/gif.latex?N^{T}G^{T}MT = 0" />
 
-而我们已知$N^{T} T = 0$
+而我们已知<img src="http://latex.codecogs.com/gif.latex?N^{T} T = 0" />
 
-所以只需要$G^{T}M = I$即有$N' \cdot T' = 0​$
+所以只需要<img src="http://latex.codecogs.com/gif.latex?G^{T}M = I$即有$N' \cdot T' = 0​" />
 
-易得$G = (M^{-1})^{T}​$
+易得<img src="http://latex.codecogs.com/gif.latex?G = (M^{-1})^{T}​" />
 
 
 
